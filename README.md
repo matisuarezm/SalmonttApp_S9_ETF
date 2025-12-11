@@ -1,0 +1,82 @@
+# 📘 Proyecto: Interfaces y Gráfica en SalmonttApp
+
+## 📝 Descripción general del sistema
+
+SalmonttApp es un sistema de gestión para una empresa salmonera que permite registrar y administrar distintas entidades del negocio, como centros de cultivo, plantas de proceso, proveedores y empleados, de forma unificada mediante una interfaz común `Registrable.java`. 
+El sistema organiza todas estas entidades en una colección polimórfica, aplica herencia y `instanceof` para personalizar la lógica según el tipo de objeto y ofrece una interfaz gráfica simple en Swing para ingresar nuevos registros y visualizar un resumen de los existentes, pensada para uso por personal administrativo no técnico.
+
+---
+## 🧱 Estructura general del proyecto
+
+```
+📦 SalmonttApp_S8/
+┣ 📂 .idea/
+┣ 📂 src/main
+┃ ┣ 📂 java/cl/salmontt
+┃ ┃ ┣ 📂 data/		        #Clases que se encargan de cargar y gestionar datos (GestorEmpleados, GestorUnidades).
+┃ ┃ ┣ 📂 model/			#Entidades del dominio (Empleado, Persona, Dirección, PlantaProceso, CentroCultivo, UnidadOperativa).
+┃ ┃ ┣ 📂 services/		#Responsables de aplicar reglas de negocio y operaciones sobre las listas cargadas (UnidadesServices). 
+┃ ┃ ┣ 📂 ui/			#Punto de entrada, interfaz y Ejecución principal (Main.java)
+┃ ┃ ┣ 📂 util/			#Utilitarios de consola, validaciones y excepciones personalizadas
+┃ ┣ 📂 resources/
+┃ ┃ ┣ 📊 Empleados.xlsx		#Datos de empleados
+┃ ┃ ┣ 📊 PlantasYCentrosCultivos.txt	#Datos de plantas y centros de cultivo.
+┣ 📂 target/
+┃ ┃ ┣ 📦 SalmontApp-S7-1.0-SNAPSHOT.jar	    # Archivo ejecutable generado por Maven
+┃ 📜 README.md
+┗ 📜 pom.xml			#Configuración Maven y dependencias
+
+```
+### Nuevas clases incorporadas en la actividad
+
+Semana 7
+
+- `Registrable.java` #Separacion de algunas funciones del menú principal.
+- `UnidadesServices.java` #Clase de servicio que aplica filtros y separa listas de plantas y centros a partir de la lista mezclada de UnidadOperativa.
+
+
+
+Todas estas clases representan la acumulación del proyecto, aplicando conceptos como atributos heredados, sobre-escritura de métodos y composición entre clases.
+
+---
+## 🧩 Requisitos
+
+Para trabajar correctamente con los recursos de este repositorio, asegúrate de tener instalado lo siguiente:
+
+- ☕ **Java JDK 18 o superior**  
+  - [Descargar Java](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html)
+
+- 💻 **IDE recomendado: IntelliJ IDEA Community Edition**  
+  - [Descargar IntelliJ IDEA (Community Edition)](https://www.jetbrains.com/idea/download/)  
+
+- 🧰 **Git instalado para clonar y versionar el repositorio**  
+  - [Descargar Git](https://git-scm.com/downloads)
+
+- 🌐 **Cuenta de GitHub activa** (obligatoria)  
+  - [Crear cuenta en GitHub](https://github.com/signup)  
+   > Tu cuenta te servirá para clonar repositorios, subir avances, y entregar evaluaciones a través de GitHub. 
+
+---
+## ⚙️ Instrucción de Ejecución
+
+### Instrucciones para clonar y ejecutar el proyecto en IDE
+
+- clonar el repositorio de github
+```bash
+git clone https://github.com/matisuarezm/SalmonttApp_S8.git
+```
+- Abre el proyecto en IntelliJ IDEA.
+- Abre la clase `Main.java` del paquete `ui`
+- Puedes ejecutar el proyecto.
+
+	> Nota: La clase Main.java trae un Menú el cual fue modificado para probar las funcionalidades de esta semana.
+
+---
+
+## 👤 Autor del proyecto
+- **Nombre completo:** Matias Suarez M.
+- **Sección:** 003A
+- **Carrera:** Analista Programador Computacional
+- **Sede:** Carrera 100% Online
+
+

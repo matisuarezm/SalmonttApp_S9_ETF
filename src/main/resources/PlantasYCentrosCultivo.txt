@@ -1,0 +1,6 @@
+C001;Centro;Centro Pucón;Pucón;120.50
+C002;Centro;Centro Temuco;Temuco;150.0
+C003;Centro;Centro Freire;Freire;80.50
+P004;Planta;Planta Loncoche;Loncoche;160.0
+P005;Planta;Plante Puerto Montt;Puerto Montt;200
+P006;Planta;Planta Temuco;Temuco;30.0
