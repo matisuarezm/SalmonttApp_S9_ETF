@@ -22,17 +22,18 @@ El sistema organiza todas estas entidades en una colección polimórfica, aplica
 ┃ ┃ ┣ 📊 Empleados.xlsx		#Datos de empleados
 ┃ ┃ ┣ 📊 PlantasYCentrosCultivos.txt	#Datos de plantas y centros de cultivo.
 ┣ 📂 target/
-┃ ┃ ┣ 📦 SalmontApp-S7-1.0-SNAPSHOT.jar	    # Archivo ejecutable generado por Maven
+┃ ┃ ┣ 📦 SalmontApp-S8-1.0-SNAPSHOT.jar	    # Archivo ejecutable generado por Maven
 ┃ 📜 README.md
 ┗ 📜 pom.xml			#Configuración Maven y dependencias
 
 ```
 ### Nuevas clases incorporadas en la actividad
 
-Semana 7
+Semana 8
 
-- `Registrable.java` #Separacion de algunas funciones del menú principal.
-- `UnidadesServices.java` #Clase de servicio que aplica filtros y separa listas de plantas y centros a partir de la lista mezclada de UnidadOperativa.
+- `Registrable.java` #Interfaz que implementan las clases (Empleado, Proveedor, CentroCultivo y PlantaProceso).
+- `SalmonttAppFrame.java` #Clase que genera una interfaz gráfica de ingreso de objetos.
+- `GestorEntidades.java` #Clase que reglas de negocio y filtros.
 
 
 

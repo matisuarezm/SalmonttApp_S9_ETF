@@ -9,7 +9,7 @@ import cl.salmontt.util.ValidaRutException;
  * @version 1.0
  */
 
-public abstract class Entidad {
+public abstract class Persona {
 
     //Atrubutos privados de la clase
     private String nombre;
@@ -19,7 +19,7 @@ public abstract class Entidad {
     private String email;
 
     /** Constructo vacio para crear una persona por medio de la herencia*/
-    public Entidad(){}
+    public Persona(){}
 
     /**
      * Constructor que inicializa una persona con todos sus datos personales y de contacto
@@ -30,7 +30,7 @@ public abstract class Entidad {
      * @param telefono es el telefono asociado al cliente.
      * @throws ValidaRutException si el textoRut no cumple con el formato.
      */
-    public Entidad(String nombre, String textoRUT, Direccion direccion, String telefono, String email) throws ValidaRutException {
+    public Persona(String nombre, String textoRUT, Direccion direccion, String telefono, String email) throws ValidaRutException {
         this.nombre = nombre;
         this.rut = new Rut(textoRUT);
         this.direccion = direccion;
@@ -47,7 +47,7 @@ public abstract class Entidad {
      * @param telefono telefono de contacto de la persona
      * @throws ValidaRutException si el textoRut no cumple el formato esperado
      */
-    public Entidad(String nombre, String textoRUT,
+    public Persona(String nombre, String textoRUT,
                    String direccion, String comuna, String region,
                    String telefono, String email) throws ValidaRutException {
         this.nombre = nombre;

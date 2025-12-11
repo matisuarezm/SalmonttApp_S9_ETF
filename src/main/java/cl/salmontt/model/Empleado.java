@@ -4,14 +4,14 @@ import cl.salmontt.util.ValidaRutException;
 import cl.salmontt.util.ValidaSueldoEmpleado;
 
 /**
- * Clase que representa a un empleado de la empresa salmontt, extendiendo los datos de personales de la calse {@link Entidad}.
+ * Clase que representa a un empleado de la empresa salmontt, extendiendo los datos de personales de la calse {@link Persona}.
  * incluye información laboral como fecha de ingreso, cargo, departamento, mail y sueldo
  *
  * @author msuarez
  * @version 1.0
  */
 
-public class Empleado extends Entidad implements Registrable{
+public class Empleado extends Persona implements Registrable{
 
     private String fechaIngreso;
     private String cargo;

@@ -6,7 +6,7 @@ import cl.salmontt.util.ValidaRutException;
 
 /**
  * Clase específica para el RUT de un cliente, en donde establecemos el formato de ingreso y un constructor
- * que verifíca si se cumple el formato correspondiente. Esta clase es parte por medio de la composicion de la clase {@link Entidad}
+ * que verifíca si se cumple el formato correspondiente. Esta clase es parte por medio de la composicion de la clase {@link Persona}
  *
  * @author msuarez
  * @version 1.0

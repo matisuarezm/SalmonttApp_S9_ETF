@@ -2,7 +2,7 @@ package cl.salmontt.model;
 
 import cl.salmontt.util.ValidaRutException;
 
-public class Proveedor extends Entidad implements Registrable{
+public class Proveedor extends Persona implements Registrable{
 
     private String giro;
 

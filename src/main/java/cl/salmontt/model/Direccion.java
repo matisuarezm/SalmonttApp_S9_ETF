@@ -2,7 +2,7 @@ package cl.salmontt.model;
 
 /**
  * Clase referente a detalles de la Direccion de los clientes de la empresa Salmontt de Puerto Montt
- * (calle, número, casa o Departamento, comuna y region) esta compone la clase {@link Entidad} y así
+ * (calle, número, casa o Departamento, comuna y region) esta compone la clase {@link Persona} y así
  * manejar por separado los detalles de la dirección
  *
  * @author msuarez
