@@ -13,10 +13,10 @@ El sistema organiza todas estas entidades en una colección polimórfica, aplica
 ┣ 📂 .idea/
 ┣ 📂 src/main
 ┃ ┣ 📂 java/cl/salmontt
-┃ ┃ ┣ 📂 data/		        #Clases que se encargan de cargar y gestionar datos (GestorEmpleados, GestorUnidades).
-┃ ┃ ┣ 📂 model/			#Entidades del dominio (Empleado, Persona, Dirección, PlantaProceso, CentroCultivo, UnidadOperativa).
-┃ ┃ ┣ 📂 services/		#Responsables de aplicar reglas de negocio y operaciones sobre las listas cargadas (UnidadesServices). 
-┃ ┃ ┣ 📂 ui/			#Punto de entrada, interfaz y Ejecución principal (Main.java)
+┃ ┃ ┣ 📂 data/		        #Clases que se encargan de cargar y gestionar datos.
+┃ ┃ ┣ 📂 model/			#Entidades del dominio (Empleado, Persona, Dirección, Proveedor).
+┃ ┃ ┣ 📂 services/		#Responsables de aplicar reglas de negocio y operaciones sobre las listas cargadas. 
+┃ ┃ ┣ 📂 ui/			#Punto de entrada, interfaz y Ejecución principal (Main.java).
 ┃ ┃ ┣ 📂 util/			#Utilitarios de consola, validaciones y excepciones personalizadas
 ┃ ┣ 📂 resources/
 ┃ ┃ ┣ 📊 Empleados.xlsx		#Datos de empleados
@@ -33,11 +33,10 @@ Semana 8
 
 - `Registrable.java` #Interfaz que implementan las clases (Empleado, Proveedor, CentroCultivo y PlantaProceso).
 - `SalmonttAppFrame.java` #Clase que genera una interfaz gráfica de ingreso de objetos.
-- `GestorEntidades.java` #Clase que reglas de negocio y filtros.
+- `GestorEntidades.java` #Clase que gestiona una coleccion ArrayList<Registrable> y aplica logica diferenciada con instanceof.
+- `Proveedor.java` #Clase que simula una nueva entidad el sistema.
 
-
-
-Todas estas clases representan la acumulación del proyecto, aplicando conceptos como atributos heredados, sobre-escritura de métodos y composición entre clases.
+Todas estas clases representan la acumulación del proyecto, aplicando conceptos herencia, interfaces, sobre-escritura de métodos y composición entre clases.
 
 ---
 ## 🧩 Requisitos
@@ -70,7 +69,7 @@ git clone https://github.com/matisuarezm/SalmonttApp_S8.git
 - Abre la clase `Main.java` del paquete `ui`
 - Puedes ejecutar el proyecto.
 
-	> Nota: La clase Main.java trae un Menú el cual fue modificado para probar las funcionalidades de esta semana.
+	> Nota: Al ejecutar la clase Main.java se inicializa una ventana para el ingreso de las Entidades.
 
 ---
 
