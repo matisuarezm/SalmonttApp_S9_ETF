@@ -3,7 +3,7 @@ package cl.salmontt.ui;
 import cl.salmontt.data.GestorEntidades;
 import cl.salmontt.model.Empleado;
 import cl.salmontt.model.Proveedor;
-import cl.salmontt.model.Registrable;
+import cl.salmontt.Interfaces.Registrable;
 import cl.salmontt.util.ValidaRutException;
 
 import javax.swing.*;

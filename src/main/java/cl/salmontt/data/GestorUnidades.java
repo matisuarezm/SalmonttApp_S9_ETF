@@ -12,24 +12,8 @@ import java.util.List;
 
 public class GestorUnidades {
 
-    //Cargas manuales de objetos para UnidadesOperativas (Centros y Plantas de cultivo)
-    public List<UnidadOperativa> pruebasManuales(){
-
-        List<UnidadOperativa> unidades = new ArrayList<>();
-
-        unidades.add(new CentroCultivo("C0100","centro","Salmontt Coquimbo","Coquimbo",60.0));
-        unidades.add(new CentroCultivo("C0200","centro","Salmontt Valdivia","Valdivia",80.0));
-        unidades.add(new CentroCultivo("C0300","centro","Salmontt Coyhaique","Coyhaique",50.0));
-
-        unidades.add(new PlantaProceso("P1001","planta","Salmontt La Calera","La Calera",120.00));
-        unidades.add(new PlantaProceso("P2001","planta","Salmontt Los Vilos","Los Vilos",30.50));
-        unidades.add(new PlantaProceso("P3001","planta","Salmontt Concepción","Concepción",250.00));
-
-        return unidades;
-    }
-
     //Cargamos el archivo desde un txt y recibimos el nombre del archivo, siempre que este dentro de la carpeta resources
-    public List<UnidadOperativa> cargaDesdeTxt (String nombreArchivo){
+    public List<UnidadOperativa> cargarUnidadesDesdeTxt (String nombreArchivo){
 
         //Creamos ArrayList de objetos de la clase UnidadesOperativas para guardar los datos del archivo.
         List<UnidadOperativa> registroUnidades = new ArrayList<>();
@@ -109,5 +93,51 @@ public class GestorUnidades {
             System.err.println("Ocurrió un error en la lectura del archivo");
         }
         return registroUnidades;
+    }
+
+    public void listarTodos(List<UnidadOperativa> unidadOperativas){
+        for (UnidadOperativa unidades : unidadOperativas){
+            unidades.mostrarInformacion();
+        }
+    }
+
+    //Mostramos la información de las plantas de proceso
+    public void mostrarPlantasProceso(List<UnidadOperativa> unidadOperativas){
+        for (UnidadOperativa unidades : unidadOperativas){
+            if (unidades instanceof PlantaProceso){
+                unidades.mostrarInformacion();
+            }
+        }
+    }
+
+    //Mostramos información de los centros de cultivo
+    public void mostrarCentrosCultivos(List<UnidadOperativa> unidadOperativas){
+        for (UnidadOperativa unidades : unidadOperativas){
+            if (unidades instanceof CentroCultivo){
+                unidades.mostrarInformacion();
+            }
+        }
+    }
+
+    //Separamos las Plantas de proceso en una nueva lista llamada resultadoPlantas
+    public List<PlantaProceso> obtenerPlantasProceso(List<UnidadOperativa> unidadOperativas){
+        List<PlantaProceso> resultadoPlantas = new ArrayList<>();
+        for (UnidadOperativa unidades : unidadOperativas) {
+            if (unidades instanceof PlantaProceso) {
+                resultadoPlantas.add((PlantaProceso) unidades);
+            }
+        }
+        return resultadoPlantas;
+    }
+
+    //Separamos los centros de cultivo en una nueva lista llamada resultadoCentros
+    public List<CentroCultivo> obtenerCentrosCultivos(List<UnidadOperativa> unidadOperativas){
+        List<CentroCultivo> resultadoCentros = new ArrayList<>();
+        for (UnidadOperativa unidades : unidadOperativas) {
+            if (unidades instanceof CentroCultivo) {
+                resultadoCentros.add((CentroCultivo) unidades);
+            }
+        }
+        return resultadoCentros;
     }
 }

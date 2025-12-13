@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SalmonttApp-S8" />
+        <module name="SalmonttApp-S9-ETF" />
       </profile>
     </annotationProcessing>
   </component>

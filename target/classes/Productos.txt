@@ -1,0 +1,7 @@
+P1001;Salmont Entero;Entero;3500
+P1002;Porcion Congelada;Congelados;2500
+P1003;Filete Atlántico;Filete;5000
+P1004;Porcion Premium con piel;Filete;4300
+P1005;Filete Trim B con piel;Filete;5200
+P1005;Salmón Ahumado;Entero;6500
+P1006;Bolsa Camarones;Congelados;3800

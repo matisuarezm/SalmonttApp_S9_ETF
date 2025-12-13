@@ -119,7 +119,7 @@ public abstract class Persona {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //sb.append("Nombre:    ").append(nombre).append(" ").append(apellido).append("\n");
-        sb.append(String.format("%-10s %s\n", "Nombre o Razón:", nombre));
+        sb.append(String.format("%-10s %s\n", "Nombre:", nombre));
         sb.append(rut);
         if (telefono != null && !telefono.isEmpty()) {
             //sb.append("Teléfono:  ").append(telefono).append("\n");

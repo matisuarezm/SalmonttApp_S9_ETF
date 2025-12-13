@@ -1,0 +1,3 @@
+Luis Dinamarca;60584537-8;La florida #2548;La Florida;RM;995040666;ldianmarca@pruebasapp.cl;C0100;Premium;Banco BCI;Débito;1234 4567 4789;05/29
+Pedro Gonzalez;77772750-8;Las Estacas #9874;Peñalolen;RM;996325874;pgonzalez@mayoristas.cl;C0200;Elite;Banco Estado;Crédito;4567 4789 4321;07/26
+Gustavo Guerra;96688670-6;Santa Blanca #5214;Providencia;RM;945612378;gguerra@emprendiendo.cl;C0300;Diamante;Banco Chile;Crédito;4789 4321 2587;09/28

@@ -1,6 +1,8 @@
 package cl.salmontt.model;
 
-public class PlantaProceso extends UnidadOperativa implements Registrable{
+import cl.salmontt.Interfaces.Registrable;
+
+public class PlantaProceso extends UnidadOperativa implements Registrable {
 
     private final double capacidadProceso;
 

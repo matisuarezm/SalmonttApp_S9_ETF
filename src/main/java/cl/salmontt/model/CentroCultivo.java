@@ -1,6 +1,8 @@
 package cl.salmontt.model;
 
-public class CentroCultivo extends UnidadOperativa implements Registrable{
+import cl.salmontt.Interfaces.Registrable;
+
+public class CentroCultivo extends UnidadOperativa implements Registrable {
 
     private final double toneladasProduccion;
 

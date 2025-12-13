@@ -1,88 +1,79 @@
 package cl.salmontt.data;
 
 import cl.salmontt.model.Empleado;
-import cl.salmontt.util.ValidaFormatoCelda;
-import cl.salmontt.util.ValidaRutException;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GestorEmpleados {
 
-    private final List<Empleado> listaEmpleados = new ArrayList<>();
+    public List<Empleado> cargaEmpleadosTxt(String nombreArchivo){
 
-    public void cargarDesdeExcel(InputStream archivoALeer){
-        try (XSSFWorkbook libro = new XSSFWorkbook(archivoALeer)){
-            XSSFSheet hoja = libro.getSheetAt(0); //Primera hoja del Excel
+        List<Empleado> listaEmpleados = new ArrayList<>();
 
-            //procesamos las filas sin incluir encabezados, for parte de fila 1.
-            //get.LastRowNum(), devuelve el numero de la última fila de la hoja que contiene datos
-            for (int i = 1; i <= hoja.getLastRowNum(); i++) {
-                var fila = hoja.getRow(i);
+        ClassLoader classLoader = getClass().getClassLoader();
 
-                if (fila == null) continue; //omitimos las filas vacías
+        try {
+            InputStream lecturaArchivo = classLoader.getResourceAsStream(nombreArchivo);
+            if (lecturaArchivo == null){
+                System.err.println("No se encontró el archivo " + nombreArchivo);
+                return listaEmpleados;
+            }
 
-                try {
-                    //Leer datos de Persona
-                    String nombre = ValidaFormatoCelda.validarString(fila.getCell(0));
-                    //String apellido = ValidaFormatoCelda.validarString(fila.getCell(1));
-                    String rut = ValidaFormatoCelda.validarString(fila.getCell(2));
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(lecturaArchivo))) {
+                String lineaArchivo;
+                int numeroLinea = 0;
 
-                    //Leer Direccion
-                    String calle = ValidaFormatoCelda.validarString(fila.getCell(3));
-                    //int numero = ValidaFormatoCelda.validarInt(fila.getCell(4));
-                    //String casaDepartamento = ValidaFormatoCelda.validarString(fila.getCell(5));
-                    String comuna = ValidaFormatoCelda.validarString(fila.getCell(6));
-                    String region = ValidaFormatoCelda.validarString(fila.getCell(7));
+                while ((lineaArchivo = br.readLine()) != null) {
+                    numeroLinea++;
+                    if (lineaArchivo.trim().isEmpty()) {
+                        continue;
+                    }
+                    String[] fila = lineaArchivo.split(";");
+                    if (fila.length != 11) {
+                        System.err.println("La Linea " + numeroLinea + " no tiene el formato esperado o es invalida");
+                        continue;
+                    }
 
-                    //Leer Contacto
-                    String telefono = ValidaFormatoCelda.validarString(fila.getCell(8));
+                    String nombre = fila[0].trim();
+                    String rut = fila[1].trim();
+                    String direccion = fila[2].trim();
+                    String comuna = fila[3].trim();
+                    String region = fila[4].trim();
+                    String telefono = fila[5].trim();
+                    String email = fila[6].trim();
+                    String fechaIngreso = fila[7].trim();
+                    String cargo = fila[8].trim();
+                    String departamento = fila[9].trim();
+                    String SueldoStr = fila[10].trim();
 
-                    //Leer datos Laborales
-                    String fechaIngreso = ValidaFormatoCelda.validarFechaString(fila.getCell(9),"dd-MM-yyyy");
-                    String cargo = ValidaFormatoCelda.validarString(fila.getCell(10));
-                    String departamento = ValidaFormatoCelda.validarString(fila.getCell(11));
-                    String mail = ValidaFormatoCelda.validarString(fila.getCell(12));
-                    double sueldo = ValidaFormatoCelda.validarDouble(fila.getCell(13));
-
-                    //Creamos objeto Empleado con  todos sus parámetros
-                    Empleado empleado = new Empleado(
-                            nombre, rut,
-                            calle, comuna, region,
-                            telefono, mail, fechaIngreso, cargo, departamento, sueldo
-                    );
-
-                    //Agregamos a la listaEmpleados la linea leida
-                    agregarALista(empleado);
-
-                }catch (ValidaRutException e){
-                    System.out.println("Error en la fila " + (i+1) + ": " + e.getMessage());
-                }catch (Exception e){
-                    System.out.println("Error al procesar fila " + (i+1) + ": " + e.getMessage());
+                    try {
+                        double sueldo = Double.parseDouble(SueldoStr);
+                        listaEmpleados.add(new Empleado(nombre, rut, direccion, comuna, region, telefono, email, fechaIngreso, cargo,departamento,sueldo));
+                    } catch (NumberFormatException exception) {
+                        //Mensaje en caso de que la cantidad no se pueda convertir en numero
+                        System.err.println("El sueldo de la linea " + lineaArchivo + " no corresponden a un número");
+                    }
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Error al abrir el archivo: " + e.getMessage());
+        }catch (Exception ex){
+            System.err.println("Ocurrió un error en la lectura del archivo");
         }
-    }
-
-    //Agrega a listaEmpleado
-    public void agregarALista(Empleado empleado){
-        listaEmpleados.add(empleado);
+        return listaEmpleados;
     }
 
     //Mostrar todos los empleados
-    public void listarTodos(){
+    public void listarTodos(List<Empleado> listaEmpleados){
         for (Empleado empleado : listaEmpleados){
             System.out.println(empleado);
         }
     }
 
     //Mostrar empleados por Nombre
-    public List<Empleado> buscarPorNombre(String nombre){
+    public List<Empleado> buscarPorNombre(List<Empleado> listaEmpleados, String nombre){
         List<Empleado> resultado = new ArrayList<>();
         String LimpiaNombre = nombre.trim().toLowerCase();
         for (Empleado empleado : listaEmpleados){
@@ -94,7 +85,7 @@ public class GestorEmpleados {
     }
 
     //Mostrar empleados por RUT
-    public List<Empleado> buscarPorRut(String rut){
+    public List<Empleado> buscarPorRut(List<Empleado> listaEmpleados, String rut){
         List<Empleado> resultado = new ArrayList<>();
         String limpiaRut = rut.trim();
         for (Empleado empleado :listaEmpleados){
@@ -106,7 +97,7 @@ public class GestorEmpleados {
     }
 
     //Mostrar empleados por Departamento
-    public List<Empleado> buscarPorDepartamento(String departamento) {
+    public List<Empleado> buscarPorDepartamento(List<Empleado> listaEmpleados, String departamento) {
         List<Empleado> resultado = new ArrayList<>();
         String limpiaDepto = departamento.trim().toLowerCase();
         for (Empleado empleado : listaEmpleados){
@@ -118,7 +109,7 @@ public class GestorEmpleados {
     }
 
     //Mostrar empleados por Cargo
-    public List<Empleado> buscarporCargo(String cargo){
+    public List<Empleado> buscarporCargo(List<Empleado> listaEmpleados, String cargo){
         List<Empleado> resultado = new ArrayList<>();
         String limpiaCargo = cargo.trim().toLowerCase();
         for (Empleado empleado : listaEmpleados){
@@ -130,7 +121,7 @@ public class GestorEmpleados {
     }
 
     //Mostrar empleados por sueldo sobre un monto
-    public List<Empleado> sueldoMayorA(double sueldo){
+    public List<Empleado> sueldoMayorA(List<Empleado> listaEmpleados, double sueldo){
         List<Empleado> resultado = new ArrayList<>();
         for (Empleado empleado : listaEmpleados){
             if (empleado.getSueldo() > sueldo){

@@ -1,5 +1,6 @@
 package cl.salmontt.data;
 
+import cl.salmontt.Interfaces.Registrable;
 import cl.salmontt.model.*;
 import cl.salmontt.util.ValidaRutException;
 

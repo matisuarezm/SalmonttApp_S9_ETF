@@ -1,5 +1,6 @@
 package cl.salmontt.model;
 
+import cl.salmontt.Interfaces.Registrable;
 import cl.salmontt.util.ValidaRutException;
 import cl.salmontt.util.ValidaSueldoEmpleado;
 
@@ -11,7 +12,7 @@ import cl.salmontt.util.ValidaSueldoEmpleado;
  * @version 1.0
  */
 
-public class Empleado extends Persona implements Registrable{
+public class Empleado extends Persona implements Registrable {
 
     private String fechaIngreso;
     private String cargo;

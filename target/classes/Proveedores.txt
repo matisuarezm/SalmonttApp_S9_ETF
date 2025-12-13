@@ -1,0 +1,3 @@
+Empresa Prueba S.A.;78680048-7;Avenida Los Alamos 186;Colina;RM;965478521;predidos@prueba.cl;Insumos Menores
+Empresa Reparadora Limitada;96665220-9;Los militares 6235;Las Condes;RM;224994400;consultas@reparadora.cl;Arreglo y Mantención
+Cartocor Ltda.;99654785-1;Ciudad Empresarial 25;Huechuraba;RM;2248944562;ventas@cartocor.cl;Cartonera y Materia Prima

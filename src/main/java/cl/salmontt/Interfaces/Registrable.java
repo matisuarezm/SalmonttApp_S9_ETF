@@ -1,4 +1,4 @@
-package cl.salmontt.model;
+package cl.salmontt.Interfaces;
 
 public interface Registrable {
 
