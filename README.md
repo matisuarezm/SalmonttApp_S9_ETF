@@ -1,4 +1,4 @@
-# 📘 Proyecto: Interfaces y Gráfica en SalmonttApp
+# 📘 Proyecto: ETF SalmonttApp - Semana 9
 
 ## 📝 Descripción general del sistema
 
