@@ -66,7 +66,7 @@ public class UtilidadConsola {
         entidadesServices.getRegistros().addAll(empleados); // Empleado implements Registrable
 
         //Clientes -> Agregamos los objetos del txt a Registrable
-        clientes = gestorClientes.cargaClientesTxt("clientes.txt");
+        clientes = gestorClientes.cargaClientesTxt("Clientes.txt");
         entidadesServices.getRegistros().addAll(clientes);
 
         //Proveedores -> Agregamos los objetos del txt a Registrable
