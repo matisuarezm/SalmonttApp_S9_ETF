@@ -1,15 +1,18 @@
 package cl.salmontt.model;
 
+import cl.salmontt.Interfaces.Registrable;
 import cl.salmontt.util.ValidaRutException;
 
 /**
- * Clase abstracta que funciona como base para ser heredada, está compuesta por las subclases {@link Rut} y {@link Direccion}
+ * Clase abstracta que funciona como base para representar personas dentro de la empresa
+ * Está compuesta por los objetos {@link Rut} y {@link Direccion} y es heredada por clases concretas como
+ * {@link Cliente}, {@link Empleado}, {@link Proveedor}
  *
  * @author msuarez
  * @version 1.0
  */
 
-public abstract class Persona {
+public abstract class Persona implements Registrable {
 
     //Atrubutos privados de la clase
     private String nombre;

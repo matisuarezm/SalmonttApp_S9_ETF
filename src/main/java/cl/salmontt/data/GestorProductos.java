@@ -8,8 +8,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor responsable de cargar productos desde un archivo de texto y construir la lista de {@link Producto}
+ * El archivo debe estar disponible en el classpath y tener un formato de columnas separado por punto y coma (;)
+ * este debe ser acorde al modelo de {@link Producto}
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class GestorProductos {
 
+    /**
+     * Carga productos desde un archivo de texto y genera una lista de objetos {@link Producto} para el uso del sistema.
+     * Cada línea válida del archivo debe tener 4 campos separados por punto y coma (;)
+     * @param nombreArchivo nombre del archivo que contiene la información de los productos
+     * @return lista de productos construida a partir del archivo
+     */
     public List<Producto> cargaProductosTxt(String nombreArchivo) {
 
         List<Producto> listaProductos = new ArrayList<>();
@@ -59,37 +73,4 @@ public class GestorProductos {
         }
         return listaProductos;
     }
-
-    //Mostrar todos los empleados
-    public void listarTodos(List<Producto> listaClientes) {
-        for (Producto producto : listaClientes) {
-            System.out.println(producto);
-        }
-    }
-
-    //Mostrar empleados por Codigo
-    public List<Producto> buscarPorCodigo(List<Producto> listaClientes, String codigo) {
-        List<Producto> resultado = new ArrayList<>();
-        String limpiaCodigo = codigo.trim();
-        for (Producto producto : listaClientes) {
-            if (producto.getCodigo().trim().equalsIgnoreCase(limpiaCodigo)) {
-                resultado.add(producto);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por categoria
-    public List<Producto> buscarPorCategoria(List<Producto> listaClientes, String categoria) {
-        List<Producto> resultado = new ArrayList<>();
-        String limpiaCategoria = categoria.trim();
-        for (Producto producto : listaClientes) {
-            if (producto.getCategoria().trim().equalsIgnoreCase(limpiaCategoria)) {
-                resultado.add(producto);
-            }
-        }
-        return resultado;
-    }
-
-
 }

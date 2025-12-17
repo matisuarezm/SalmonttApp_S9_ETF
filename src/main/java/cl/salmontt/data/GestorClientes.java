@@ -10,8 +10,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor responsable de cargar clientes desde un archivo de texto y construir la lista de {@link Cliente}
+ * El archivo debe estar disponible en el classpath y tener un formato de columnas separado por punto y coma (;)
+ * este debe ser acorde al modelo de {@link Cliente} y {@link Tarjeta}
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class GestorClientes {
 
+    /**
+     * Carga clientes desde un archivo de texto y genera una lista de objetos {@link Cliente} para el uso del sistema.
+     * Cada línea válida del archivo debe tener 13 campos separados por punto y coma (;)
+     * @param nombreArchivo nombre del archivo que contiene la información del cliente
+     * @return lista de clientes construida a partir del archivo
+     */
     public List<Cliente> cargaClientesTxt(String nombreArchivo) {
 
         List<Cliente> listaClientes = new ArrayList<>();
@@ -67,48 +81,5 @@ public class GestorClientes {
             System.err.println("Ocurrió un error en la lectura del archivo");
         }
         return listaClientes;
-    }
-
-    //Mostrar todos los empleados
-    public void listarTodos(List<Cliente> listaClientes) {
-        for (Cliente cliente : listaClientes) {
-            System.out.println(cliente);
-        }
-    }
-
-    //Mostrar empleados por Nombre
-    public List<Cliente> buscarPorNombre(List<Cliente> listaClientes, String nombre) {
-        List<Cliente> resultado = new ArrayList<>();
-        String LimpiaNombre = nombre.trim().toLowerCase();
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getNombre().toLowerCase().equalsIgnoreCase(LimpiaNombre)) {
-                resultado.add(cliente);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por RUT
-    public List<Cliente> buscarPorRut(List<Cliente> listaClientes, String rut) {
-        List<Cliente> resultado = new ArrayList<>();
-        String limpiaRut = rut.trim();
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getRut().getTextoRut().trim().equalsIgnoreCase(limpiaRut)) {
-                resultado.add(cliente);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por Codigo
-    public List<Cliente> buscarPorCodigo(List<Cliente> listaClientes, String codigo) {
-        List<Cliente> resultado = new ArrayList<>();
-        String limpiaCodigo = codigo.trim();
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getCodigoCliente().trim().equalsIgnoreCase(limpiaCodigo)) {
-                resultado.add(cliente);
-            }
-        }
-        return resultado;
     }
 }

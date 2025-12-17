@@ -8,8 +8,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor responsable de cargar empleados desde un archivo de texto y construir la lista de {@link Empleado}
+ * El archivo debe estar disponible en el classpath y tener un formato de columnas separado por punto y coma (;)
+ * este debe ser acorde al modelo de {@link Empleado}
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class GestorEmpleados {
 
+    /**
+     * Carga empleado desde un archivo de texto y genera una lista de objetos {@link Empleado} para el uso del sistema.
+     * Cada línea válida del archivo debe tener 11 campos separados por punto y coma (;)
+     * @param nombreArchivo nombre del archivo que contiene la información de los empleados
+     * @return lista de empleados construida a partir del archivo
+     */
     public List<Empleado> cargaEmpleadosTxt(String nombreArchivo){
 
         List<Empleado> listaEmpleados = new ArrayList<>();
@@ -63,71 +77,5 @@ public class GestorEmpleados {
             System.err.println("Ocurrió un error en la lectura del archivo");
         }
         return listaEmpleados;
-    }
-
-    //Mostrar todos los empleados
-    public void listarTodos(List<Empleado> listaEmpleados){
-        for (Empleado empleado : listaEmpleados){
-            System.out.println(empleado);
-        }
-    }
-
-    //Mostrar empleados por Nombre
-    public List<Empleado> buscarPorNombre(List<Empleado> listaEmpleados, String nombre){
-        List<Empleado> resultado = new ArrayList<>();
-        String LimpiaNombre = nombre.trim().toLowerCase();
-        for (Empleado empleado : listaEmpleados){
-            if (empleado.getNombre().equalsIgnoreCase(nombre)){
-                resultado.add(empleado);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por RUT
-    public List<Empleado> buscarPorRut(List<Empleado> listaEmpleados, String rut){
-        List<Empleado> resultado = new ArrayList<>();
-        String limpiaRut = rut.trim();
-        for (Empleado empleado :listaEmpleados){
-            if (empleado.getRut().getTextoRut().equalsIgnoreCase(rut)){
-                resultado.add(empleado);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por Departamento
-    public List<Empleado> buscarPorDepartamento(List<Empleado> listaEmpleados, String departamento) {
-        List<Empleado> resultado = new ArrayList<>();
-        String limpiaDepto = departamento.trim().toLowerCase();
-        for (Empleado empleado : listaEmpleados){
-            if (empleado.getDepartamento().equalsIgnoreCase(limpiaDepto)){
-                resultado.add(empleado);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por Cargo
-    public List<Empleado> buscarporCargo(List<Empleado> listaEmpleados, String cargo){
-        List<Empleado> resultado = new ArrayList<>();
-        String limpiaCargo = cargo.trim().toLowerCase();
-        for (Empleado empleado : listaEmpleados){
-            if (empleado.getCargo().equalsIgnoreCase(limpiaCargo)) {
-                resultado.add(empleado);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por sueldo sobre un monto
-    public List<Empleado> sueldoMayorA(List<Empleado> listaEmpleados, double sueldo){
-        List<Empleado> resultado = new ArrayList<>();
-        for (Empleado empleado : listaEmpleados){
-            if (empleado.getSueldo() > sueldo){
-                resultado.add(empleado);
-            }
-        }
-        return resultado;
     }
 }

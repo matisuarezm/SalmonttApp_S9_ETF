@@ -27,13 +27,11 @@ public class Rut {
         this.textoRut = textoRut;
     }
 
-    //Getter
     /** Retorna el RUT en formato texto */
     public String getTextoRut(){
         return textoRut;
     }
 
-    //Setter
     /** Establece el rut de una persona y lo valida */
     public void setTextoRut(String nuevoRut) throws ValidaRutException {
         ValidaFormatoRut.validar(nuevoRut);

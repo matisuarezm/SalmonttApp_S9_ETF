@@ -8,8 +8,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor responsable de cargar proveedores desde un archivo de texto y construir la lista de {@link Proveedor}
+ * El archivo debe estar disponible en el classpath y tener un formato de columnas separado por punto y coma (;)
+ * este debe ser acorde al modelo de {@link Proveedor}
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class GestorProveedores {
 
+    /**
+     * Carga proveedor desde un archivo de texto y genera una lista de objetos {@link Proveedor} para el uso del sistema.
+     * Cada línea válida del archivo debe tener 8 campos separados por punto y coma (;)
+     * @param nombreArchivo nombre del archivo que contiene la información del proveedor
+     * @return lista de proveedores construida a partir del archivo
+     */
     public List<Proveedor> cargaProveedoresTxt(String nombreArchivo) {
 
         List<Proveedor> listaProveedores = new ArrayList<>();
@@ -56,37 +70,4 @@ public class GestorProveedores {
         }
         return listaProveedores;
     }
-
-    //Mostrar todos los empleados
-    public void listarTodos(List<Proveedor> listaProveedores) {
-        for (Proveedor proveedor : listaProveedores) {
-            System.out.println(proveedor);
-        }
-    }
-
-    //Mostrar empleados por Nombre
-    public List<Proveedor> buscarPorNombre(List<Proveedor> listaProveedores, String nombre) {
-        List<Proveedor> resultado = new ArrayList<>();
-        String LimpiaNombre = nombre.trim().toLowerCase();
-        for (Proveedor proveedor : listaProveedores) {
-            if (proveedor.getNombre().trim().toLowerCase().equalsIgnoreCase(LimpiaNombre)) {
-                resultado.add(proveedor);
-            }
-        }
-        return resultado;
-    }
-
-    //Mostrar empleados por RUT
-    public List<Proveedor> buscarPorRut(List<Proveedor> listaProveedores, String rut) {
-        List<Proveedor> resultado = new ArrayList<>();
-        String limpiaRut = rut.trim();
-        for (Proveedor proveedor : listaProveedores) {
-            if (proveedor.getRut().getTextoRut().trim().equalsIgnoreCase(limpiaRut)) {
-                resultado.add(proveedor);
-            }
-        }
-        return resultado;
-    }
-
-
 }

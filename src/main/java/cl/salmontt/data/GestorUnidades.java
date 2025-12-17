@@ -10,9 +10,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestor responsable de cargar unidades operativas (centros de cultivo y plantas de proceso) desde un archivo de texto
+ * Y construir la lista de {@link UnidadOperativa}. El archivo debe estar disponible en el classpath y tener un formato de
+ * columnas separado por punto y coma (;). El cual debe ser acorde al modelo de {@link UnidadOperativa}
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class GestorUnidades {
 
-    //Cargamos el archivo desde un txt y recibimos el nombre del archivo, siempre que este dentro de la carpeta resources
+    /**
+     * Carga unidades operativas desde un archivo de texto y genera una lista de objetos {@link CentroCultivo} y {@link PlantaProceso}
+     * para el uso del sistema. Cada línea válida del archivo debe tener 5 campos separados por punto y coma (;)
+     * @param nombreArchivo nombre del archivo que contiene la información de unidades Operativas
+     * @return lista de unidades operativas construida a partir del archivo
+     */
     public List<UnidadOperativa> cargarUnidadesDesdeTxt (String nombreArchivo){
 
         //Creamos ArrayList de objetos de la clase UnidadesOperativas para guardar los datos del archivo.
@@ -93,51 +106,5 @@ public class GestorUnidades {
             System.err.println("Ocurrió un error en la lectura del archivo");
         }
         return registroUnidades;
-    }
-
-    public void listarTodos(List<UnidadOperativa> unidadOperativas){
-        for (UnidadOperativa unidades : unidadOperativas){
-            unidades.mostrarInformacion();
-        }
-    }
-
-    //Mostramos la información de las plantas de proceso
-    public void mostrarPlantasProceso(List<UnidadOperativa> unidadOperativas){
-        for (UnidadOperativa unidades : unidadOperativas){
-            if (unidades instanceof PlantaProceso){
-                unidades.mostrarInformacion();
-            }
-        }
-    }
-
-    //Mostramos información de los centros de cultivo
-    public void mostrarCentrosCultivos(List<UnidadOperativa> unidadOperativas){
-        for (UnidadOperativa unidades : unidadOperativas){
-            if (unidades instanceof CentroCultivo){
-                unidades.mostrarInformacion();
-            }
-        }
-    }
-
-    //Separamos las Plantas de proceso en una nueva lista llamada resultadoPlantas
-    public List<PlantaProceso> obtenerPlantasProceso(List<UnidadOperativa> unidadOperativas){
-        List<PlantaProceso> resultadoPlantas = new ArrayList<>();
-        for (UnidadOperativa unidades : unidadOperativas) {
-            if (unidades instanceof PlantaProceso) {
-                resultadoPlantas.add((PlantaProceso) unidades);
-            }
-        }
-        return resultadoPlantas;
-    }
-
-    //Separamos los centros de cultivo en una nueva lista llamada resultadoCentros
-    public List<CentroCultivo> obtenerCentrosCultivos(List<UnidadOperativa> unidadOperativas){
-        List<CentroCultivo> resultadoCentros = new ArrayList<>();
-        for (UnidadOperativa unidades : unidadOperativas) {
-            if (unidades instanceof CentroCultivo) {
-                resultadoCentros.add((CentroCultivo) unidades);
-            }
-        }
-        return resultadoCentros;
     }
 }

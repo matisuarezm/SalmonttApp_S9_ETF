@@ -1,76 +1,86 @@
 package cl.salmontt.ui;
 
-import cl.salmontt.data.GestorClientes;
-import cl.salmontt.data.GestorEmpleados;
-import cl.salmontt.data.GestorProductos;
 import cl.salmontt.model.Cliente;
 import cl.salmontt.model.Empleado;
-import cl.salmontt.model.OrdenDeCompra;
-import cl.salmontt.model.Producto;
+import cl.salmontt.util.UtilidadConsola;
 
-import  java.util.List;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
+/**
+ *
+ */
 public class Main {
     public static void main(String[] args) {
+        UtilidadConsola.cargaInformacionTxt();
+        Scanner input = new Scanner(System.in);
+        int opcionMenu = 0;
 
-        /*
-        System.out.println("Inciando SalmonttAPP");
-        SalmonttAppFrame ventana = new SalmonttAppFrame();
-        ventana.setVisible(true);
-        ventana.setLocationRelativeTo(null);
+        do {
+            UtilidadConsola.MenuPrincipal();
+            try {
+                opcionMenu = input.nextInt();
+                input.nextLine();
 
+                switch (opcionMenu){
+                    case 1:
+                        System.out.println("==== ENTIDADES REGISTRABLES ====");
+                        UtilidadConsola.entidadesServices.visualizarRegistro();
+                        break;
+                    case 2:
+                        System.out.print("Ingrese nombre de empleado: ");
+                        String nombreEmp = input.nextLine();
+                        List<Empleado> empleadoEncontrado = UtilidadConsola.empleadoServices.buscarPorNombre(UtilidadConsola.empleados, nombreEmp);
+                        if (empleadoEncontrado.isEmpty()){
+                            System.out.println("No se encontró el empleado con nombre:" + nombreEmp);
+                        }else{
+                            for (Empleado emp : empleadoEncontrado){
+                                System.out.println(emp);
+                            }
+                        }
+                        break;
+                    case 3:
+                        System.out.print("Ingrese código de cliente: ");
+                        String codCli = input.nextLine();
 
-        GestorEmpleados gestor = new GestorEmpleados();
+                        List<Cliente> clienteEncontrado = UtilidadConsola.clienteServices.buscarPorCodigo(UtilidadConsola.clientes, codCli);
 
-        // 1) Cargar desde TXT (ubicado en src/main/resources)
-        List<Empleado> empleados = gestor.cargaEmpleadosTxt("empleados.txt");
+                        if (clienteEncontrado.isEmpty()){
+                            System.out.println("No se encontró ningún cliente con el código: " + codCli);
+                        }else{
+                            for (Cliente cli : clienteEncontrado){
+                                System.out.println(cli);
+                            }
+                        }
+                        break;
+                    case 4:
+                        System.out.println("==== PRODUCTOS ====");
+                        UtilidadConsola.productosServices.listarTodos(UtilidadConsola.productos);
+                        break;
+                    case 5:
+                        UtilidadConsola.ordenPrueba();
+                        break;
+                    case 9:
+                        UtilidadConsola.salirMenuPrincipal();
+                        break;
+                    default:
+                        System.out.println("Opción ingresada inválida, Intente nuevamente");
+                }
 
+                if (opcionMenu != 9){
+                    if (!UtilidadConsola.deseaContinuar(input)) {
+                        opcionMenu = 9;
+                        UtilidadConsola.salirMenuPrincipal();
+                    }
+                }
 
-        // 2) Mostrar todos
-        System.out.println("=== TODOS LOS EMPLEADOS ===");
-        gestor.listarTodos(empleados);
-
-        // 3) Probar búsquedas
-        System.out.println("\n=== BUSCAR POR NOMBRE: 'Juan Pérez' ===");
-        gestor.buscarPorNombre(empleados,"Juan Perez")
-                .forEach(System.out::println);
-
-        System.out.println("\n=== BUSCAR POR RUT: '11111111-1' ===");
-        gestor.buscarPorRut(empleados, "17404347-7")
-                .forEach(System.out::println);
-
-        System.out.println("\n=== EMPLEADOS CON SUELDO > 1_000_000 ===");
-        gestor.sueldoMayorA(empleados,600000)
-                .forEach(System.out::println);
-
-
-        GestorClientes gestorClientes = new GestorClientes();
-        List<Cliente> clientes = gestorClientes.cargaClientesTxt("clientes.txt");
-
-        gestorClientes.listarTodos(clientes);
-
-        gestorClientes.buscarPorNombre(clientes, "Gustavo Guerra ")
-                .forEach(System.out::println);
-
-        gestorClientes.buscarPorCodigo(clientes, "C0100")
-                .forEach(System.out::println);
-
-         */
-
-        GestorClientes gestorClientes = new GestorClientes();
-        List<Cliente> clientes = gestorClientes.cargaClientesTxt("Clientes.txt");
-
-        GestorProductos gestorProductos = new GestorProductos();
-        List<Producto> productos = gestorProductos.cargaProductosTxt("Productos.txt");
-
-        Cliente c1 = clientes.get(0);
-        Producto p1 = productos.get(0);
-        Producto p2 = productos.get(1);
-
-        OrdenDeCompra orden = new OrdenDeCompra("OC-001", "13-12-2025", c1);
-        orden.agregarProducto(p1, 10);
-        orden.agregarProducto(p2, 5);
-
-        System.out.println(orden);
+            }catch(InputMismatchException e){
+                System.err.println("Error.. Entrada inválida, Por favor ingrese una opción del Menú");
+                input.nextLine();
+                opcionMenu = 0;
+            }
+        }while (opcionMenu != 9);
+        input.close();
     }
 }

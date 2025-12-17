@@ -1,13 +1,19 @@
 package cl.salmontt.util;
 
-import javax.swing.*;
-
+/**
+ * Clase de utilidad para validar el sueldo de los empleados de la empresa Salmontt.
+ * Aplica las reglas de negocio definidas para los sueldos mínimos y máximos
+ *
+ * @author msuarez
+ * @version 1.0
+ */
 public class ValidaSueldoEmpleado {
 
     /**
-     * Método que valida que el sueldo sea mayor 0
+     * Valida que el sueldo cumpla con las reglas de negocio definidas:
+     * mayor o igual al sueldo mínimo legal y menor o igual al máximo permitido.
      * @param sueldo Sueldo mensual
-     * @throws IllegalArgumentException si el sueldo es negativo
+     * @throws IllegalArgumentException si el sueldo es negativo o incumple requisitos legales
      */
     public static void validar(double sueldo){
 

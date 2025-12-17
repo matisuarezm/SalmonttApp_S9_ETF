@@ -1,6 +1,6 @@
 package cl.salmontt.ui;
 
-import cl.salmontt.data.GestorEntidades;
+import cl.salmontt.services.EntidadesServices;
 import cl.salmontt.model.Empleado;
 import cl.salmontt.model.Proveedor;
 import cl.salmontt.Interfaces.Registrable;
@@ -18,10 +18,10 @@ public class SalmonttAppFrame extends JFrame{
     private JTextArea txtAreaLog;
     private JButton btnIngresar;
 
-    private GestorEntidades gestor;
+    private EntidadesServices gestor;
 
     public SalmonttAppFrame(){
-        gestor = new GestorEntidades();
+        gestor = new EntidadesServices();
         setTitle("INGRESO DE ENTIDADES SALMONTAPP");
         setSize(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
