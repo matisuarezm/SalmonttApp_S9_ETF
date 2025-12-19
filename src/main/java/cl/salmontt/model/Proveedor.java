@@ -69,6 +69,14 @@ public class Proveedor extends Persona{
     }
 
     /**
+     * Simula el registro de un nuevo proveedor a la lista de Registrable
+     */
+    @Override
+    public void registrar() {
+        System.out.println("Registrando Proveedor: " + getNombre());
+    }
+
+    /**
      * {@inheritDoc}
      * En este caso, el resumen incluye nombre, RUT, giro y telefono del proveedor
      * @return cadena con un resumen compacto del proveedor

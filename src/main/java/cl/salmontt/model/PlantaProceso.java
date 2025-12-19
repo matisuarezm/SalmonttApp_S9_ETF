@@ -45,6 +45,14 @@ public class PlantaProceso extends UnidadOperativa{
     }
 
     /**
+     * Simula el registro de una nueva Planta a la lista de Registrable
+     */
+    @Override
+    public void registrar() {
+        System.out.println("Registrando Planta de Proceso: " + getNombre());
+    }
+
+    /**
      * {@inheritDoc}
      * En este caso, el resumen incluye el tipo, nombre y la capacidad de procesamiento de la planta
      * @return cadena con un resumen de la planta de proceso

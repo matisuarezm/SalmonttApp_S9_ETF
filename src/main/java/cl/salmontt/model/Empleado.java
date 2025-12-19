@@ -144,6 +144,14 @@ public class Empleado extends Persona{
     }
 
     /**
+     * Simula el registro de un nuevo empleado a la lista de Registrable
+     */
+    @Override
+    public void registrar() {
+        System.out.println("Registrando Empleado: " + getNombre());
+    }
+
+    /**
      * {@inheritDoc}
      * En este caso, el resumen incluye nombre, cargo y sueldo del empleado
      * @return cadena con el resumen compacto de la informacion laboral del empleado

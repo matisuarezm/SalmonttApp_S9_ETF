@@ -48,6 +48,14 @@ public class CentroCultivo extends UnidadOperativa{
     }
 
     /**
+     * Simula el registro de un nuevo Centro a la lista de Registrable
+     */
+    @Override
+    public void registrar() {
+        System.out.println("Registrando Centro de Cultivo: " + getNombre());
+    }
+
+    /**
      * {@inheritDoc}
      * En este caso, incluye el tipo, nombre y las toneladas de produccion
      * @return cadena de texto con el resumen del centro de cultivo.

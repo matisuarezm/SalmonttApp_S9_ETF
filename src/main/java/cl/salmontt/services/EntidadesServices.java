@@ -30,6 +30,7 @@ public class EntidadesServices {
      * @param reg entidad que implementa {@link Registrable} a agregar
      */
     public void agregarRegistro (Registrable reg){
+        reg.registrar();
         registros.add(reg);
         //System.out.println(reg.toString());
     }

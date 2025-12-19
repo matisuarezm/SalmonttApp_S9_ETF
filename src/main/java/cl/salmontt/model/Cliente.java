@@ -20,10 +20,10 @@ public class Cliente extends Persona{
      */
 
     private String tipoCliente;
+
     /**
      * Tarjeta asociada al cliente para operaciones de pago
      */
-
     private Tarjeta tarjeta;
 
     /**
@@ -107,6 +107,14 @@ public class Cliente extends Persona{
      public Tarjeta getTarjeta(){
         return tarjeta;
      }
+
+    /**
+     * Simula el registro de un nuevo cliente a la lista de Registrable
+     */
+    @Override
+    public void registrar() {
+        System.out.println("Registrando Cliente: " + getNombre());
+    }
 
     /**
      * {@inheritDoc}
